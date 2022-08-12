@@ -1,6 +1,6 @@
 import { Category } from "../model/Category";
 
-interface ICreateCategoryDTO {
+interface CreateCategoryDTO {
     name: string;
     description: string;
 }
@@ -12,11 +12,9 @@ class CategoriesRepository {
         this.categories = [];
     }
 
-    create({ name, description }: ICreateCategoryDTO): void {
+    create({ name, description }: CreateCategoryDTO): void {
         const category = new Category(); 
         
-        const existsCategory =this.categories.some((category) => category.name === name);
-
         Object.assign(category, {
             name,
             description,
