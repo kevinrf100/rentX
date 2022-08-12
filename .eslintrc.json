@@ -1,9 +1,7 @@
 {
     "env": {
-        "browser": true,
         "es2021": true,
-        "jest": true,
-        "es2020": true
+        "node": true
     },
     "extends": [
         "airbnb-base",
@@ -18,12 +16,10 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "eslint-plugin-import-helpers",
         "prettier"
     ],
     "rules": {
         "camelcase": "off",
-        "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
             "error",
             {
@@ -35,6 +31,7 @@
                 }
             }
         ],
+        "import/no-unresolved": "error",
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
         "no-shadow": "off",
@@ -62,11 +59,5 @@
             { "devDependencies": ["**/*.spec.js"] }
         ],
         "prettier/prettier": "error"
-    },
-    "settings": {
-        "import/resolver": {
-          "typescript": {}
-        }
-      }
+    }
 }
-
