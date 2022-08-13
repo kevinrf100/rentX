@@ -19,6 +19,7 @@
         "prettier"
     ],
     "rules": {
+        "no-use-before-define": "off",
         "camelcase": "off",
         "@typescript-eslint/naming-convention": [
             "error",
