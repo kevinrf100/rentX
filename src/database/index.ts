@@ -1,13 +1,18 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 export const appDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
+    host: "pg",
     port: 5432,
     username: "kevin",
     password: "ignite",
     database: "rentx",
-    logging: true,
+    entities: ["./src/modules/cars/entities/*.ts"],
+    migrations: ["./src/database/migrations/*.ts"],
 });
 
-appDataSource.initialize();
+appDataSource
+    .initialize()
+    .then(() => console.log("Success to connect in postgres"))
+    .catch((err) => console.error(err));

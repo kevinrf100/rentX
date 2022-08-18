@@ -1,9 +1,9 @@
 version: '3.7'
 
 services: 
-    database_ignite:
+    pg_db:
         image: postgres
-        container_name: database_ignite
+        container_name: pg
         restart: always
         ports:
             - 5432:5432
@@ -13,7 +13,8 @@ services:
             - POSTGRES_DB=rentx
         volumes:
             - pgdata:/data/postgres
-        network_mode: host
+        networks:
+            - default
     app: 
         build: .
         container_name: rentx
@@ -21,7 +22,10 @@ services:
             - 3333:3333
         volumes:
             - .:/usr/app
-        network_mode: host
+        networks:
+            - default
+        depends_on:
+            - database_ignite
 volumes:
     pgdata: 
         driver: local

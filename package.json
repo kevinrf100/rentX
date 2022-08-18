@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
+    "migration:create": "ts-node-dev ./node_modules/typeorm/cli migration:create ./src/database/migrations"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +20,7 @@
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.5.0",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.3.7",
     "uuid": "^8.3.2"
   },

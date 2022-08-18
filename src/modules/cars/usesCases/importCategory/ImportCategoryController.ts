@@ -4,9 +4,9 @@ import { ImportCategoryUseCases } from "./ImportCategoryUseCases";
 
 class ImportCategoryController {
     constructor(private importCategoryUseCases: ImportCategoryUseCases) {}
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         const { file } = request;
-        this.importCategoryUseCases.execute(file);
+        await this.importCategoryUseCases.execute(file);
         return response.json();
     }
 }
