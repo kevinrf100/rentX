@@ -10,7 +10,7 @@ class ImportCategoryController {
             ImportCategoryUseCases
         );
         await importCategoryUseCases.execute(file);
-        return response.json();
+        return response.status(201).json();
     }
 }
 
