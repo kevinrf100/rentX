@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
-    "migration:create": "ts-node-dev ./node_modules/typeorm/cli migration:create ./src/database/migrations"
+    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts"
   },
   "keywords": [],
   "author": "",

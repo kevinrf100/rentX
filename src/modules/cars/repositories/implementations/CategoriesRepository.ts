@@ -7,8 +7,6 @@ import { ICategoriesRepository } from "../ICategoriesRepository";
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
 
-    private static INSTANCE: CategoriesRepository;
-
     constructor() {
         this.repository = appDataSource.getRepository(Category);
     }
@@ -25,19 +23,13 @@ class CategoriesRepository implements ICategoriesRepository {
     }
 
     async findByName(name: string): Promise<Category> {
-        try {
-            const category = await this.repository.findOne({
-                where: {
-                    name,
-                },
-            });
-            console.log(category);
+        const category = await this.repository.findOne({
+            where: {
+                name,
+            },
+        });
 
-            return category;
-        } catch (error) {
-            console.log(error);
-        }
-        return null;
+        return category;
     }
 }
 
