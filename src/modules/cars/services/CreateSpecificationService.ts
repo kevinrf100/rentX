@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+
+import { AppError } from "../../../errors/AppError";
 import { ISpecificationsRepository } from "../repositories/ISpecificationsRepository";
 
 interface IRequest {
@@ -14,7 +16,7 @@ class CreateSpecificationService {
             this.specificationsRepository.findByName(name);
 
         if (specificationAlreadyExits) {
-            throw new Error("Specification already exists");
+            throw new AppError("Specification already exists");
         }
 
         this.specificationsRepository.create({ name, description });
