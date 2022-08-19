@@ -1,14 +1,20 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("specifications")
-class Specification {
+@Entity("users")
+class User {
     @PrimaryColumn()
-    id?: string;
+    id: string;
     @Column()
     name: string;
     @Column()
-    description: string;
+    password: string;
+    @Column()
+    email: string;
+    @Column()
+    driver_license: string;
+    @Column()
+    isAdmin: boolean;
     @CreateDateColumn()
     created_at: Date;
 
@@ -19,4 +25,4 @@ class Specification {
     }
 }
 
-export { Specification };
+export { User };
