@@ -8,6 +8,8 @@
             "type": "node",
             "request": "attach",
             "name": "Launch Program",
+            "port": 9229,
+            "address": "localhost",
             "skipFiles": [
                 "<node_internals>/**"
             ],
