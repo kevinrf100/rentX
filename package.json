@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
-    "migration:create": "ts-node-dev ./node_modules/typeorm/cli migration:create ./src/database/migrations/"
+    "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "migration:run": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
+    "migration:create": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:create ./src/database/migrations/"
   },
   "keywords": [],
   "author": "",
@@ -47,6 +47,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.8",
     "ts-node-dev": "^2.0.0",
-    "tsc": "^2.0.4"
+    "tsc": "^2.0.4",
+    "tsconfig-paths": "^4.1.0"
   }
 }
