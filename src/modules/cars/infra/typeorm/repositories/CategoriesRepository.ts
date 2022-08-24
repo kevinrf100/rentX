@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 
-import { appDataSource } from "../../../../../shared/infra/typeorm";
+import appDataSource from "@shared/infra/typeorm";
+
 import { ICategoriesRepository } from "../../../repositories/ICategoriesRepository";
 import { Category } from "../entities/Category";
 

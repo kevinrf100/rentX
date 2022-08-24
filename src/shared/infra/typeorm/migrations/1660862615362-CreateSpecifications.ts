@@ -6,7 +6,7 @@ export class CreateSpecifications1660862615362 implements MigrationInterface {
             new Table({
                 name: "specifications",
                 columns: [
-                    { name: "id", type: "uuid" },
+                    { name: "id", type: "uuid", isPrimary: true },
                     { name: "name", type: "varchar" },
                     {
                         name: "description",

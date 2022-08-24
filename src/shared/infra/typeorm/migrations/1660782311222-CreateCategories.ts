@@ -6,7 +6,7 @@ export class CreateCategories1660782311222 implements MigrationInterface {
             new Table({
                 name: "categories",
                 columns: [
-                    { name: "id", type: "uuid" },
+                    { name: "id", type: "uuid", isPrimary: true },
                     { name: "name", type: "varchar" },
                     {
                         name: "description",
