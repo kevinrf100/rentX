@@ -5,10 +5,14 @@ import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase";
 
 class CreateCarSpecificationController {
     async handle(request: Request, response: Response): Promise<Response> {
+        const { car_id, specifications_id } = request.body;
         const createCarSpecificationUseCase = container.resolve(
             CreateCarSpecificationUseCase
         );
-        await createCarSpecificationUseCase.execute();
+        await createCarSpecificationUseCase.execute({
+            car_id,
+            specifications_id,
+        });
 
         return response.json();
     }

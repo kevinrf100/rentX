@@ -1,6 +1,6 @@
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 
-import { ICarsRepository } from "../ICarsRepository";
+import { ICarsRepository, ICreateCarDTO } from "../ICarsRepository";
 
 class CarsRepositoryInMemory implements ICarsRepository {
     private cars: Car[] = [];
@@ -12,7 +12,9 @@ class CarsRepositoryInMemory implements ICarsRepository {
         fine_amount,
         license_plate,
         name,
-    }): Promise<Car> {
+        specifications,
+        id,
+    }: ICreateCarDTO): Promise<Car> {
         const car = new Car();
 
         Object.assign(car, {
@@ -23,6 +25,8 @@ class CarsRepositoryInMemory implements ICarsRepository {
             fine_amount,
             license_plate,
             name,
+            specifications,
+            id,
         });
 
         this.cars.push(car);
