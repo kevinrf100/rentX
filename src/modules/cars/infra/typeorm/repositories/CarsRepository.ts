@@ -66,6 +66,11 @@ class CarsRepository implements ICarsRepository {
 
         return car;
     }
+
+    async findById(car_id) {
+        const car = await this.repository.findOne({ where: { id: car_id } });
+        return car;
+    }
 }
 
 export { CarsRepository };

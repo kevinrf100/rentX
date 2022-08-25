@@ -39,11 +39,11 @@ describe("List Cars", () => {
         });
 
         await carsRepository.create({
-            name: "carName",
+            name: "testing",
             description: "car description",
             daily_rate: 10,
             category_id: "is",
-            brand: "asas",
+            brand: "test",
             fine_amount: 20,
             license_plate: "3453",
         });
@@ -83,7 +83,7 @@ describe("List Cars", () => {
             name: "carName",
             description: "car description",
             daily_rate: 10,
-            category_id: "catgory_id",
+            category_id: "category_id",
             brand: "audi",
             fine_amount: 20,
             license_plate: "3453",
