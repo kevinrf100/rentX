@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { QueryBuilder, Repository } from "typeorm";
 
 import {
     ICarsRepository,
@@ -37,10 +37,27 @@ class CarsRepository implements ICarsRepository {
 
         return car;
     }
-    async list(): Promise<Car[]> {
-        const list = this.repository.find();
+    async findAvailable(
+        name?: string,
+        brand?: string,
+        category_id?: string
+    ): Promise<Car[]> {
+        const carsQuery = await this.repository
+            .createQueryBuilder("c")
+            .where("available = :available", { available: true });
 
-        return list;
+        if (name) {
+            carsQuery.andWhere("name = :name", { name });
+        }
+        if (brand) {
+            carsQuery.andWhere("brand = :brand", { brand });
+        }
+        if (category_id) {
+            carsQuery.andWhere("category_id = :category_id", { category_id });
+        }
+        const cars = carsQuery.getMany();
+
+        return cars;
     }
     async findByLicensePlate(license_plate: string): Promise<Car> {
         const car = await this.repository.findOne({

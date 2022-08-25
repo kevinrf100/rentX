@@ -11,7 +11,7 @@ const appDataSource = new DataSource({
     migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
 });
 
-export function createConnection(host = "pg"): Promise<DataSource> {
+export function createConnection(host = "0.0.0.0"): Promise<DataSource> {
     return appDataSource.setOptions({ host }).initialize();
 }
 
