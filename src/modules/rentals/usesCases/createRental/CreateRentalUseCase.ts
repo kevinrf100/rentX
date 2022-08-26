@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IRentalsRepository } from "@modules/rentals/respositories/IRentalsRepository";
+import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
@@ -12,10 +13,13 @@ interface IRequest {
 @injectable()
 class CreateRentalUseCase {
     constructor(
-        @inject("RentalRepository")
-        private rentalsRepository: IRentalsRepository
+        @inject("RentalsRepository")
+        private rentalsRepository: IRentalsRepository,
+        @inject("DateProvider")
+        private dateProvider: IDateProvider
     ) {}
     async execute({ car_id, user_id, expected_return_date }: IRequest) {
+        const minimumHours = 24;
         const carUnavailable =
             await this.rentalsRepository.findOpenRentalByCarId(car_id);
 
@@ -29,6 +33,15 @@ class CreateRentalUseCase {
 
         if (user) {
             throw new AppError("Car is unavailable");
+        }
+
+        const compare = this.dateProvider.compareInHours(
+            new Date(),
+            expected_return_date
+        );
+
+        if (compare < minimumHours) {
+            throw new AppError("Return date minimum is 24 hours");
         }
 
         const rental = await this.rentalsRepository.create({
