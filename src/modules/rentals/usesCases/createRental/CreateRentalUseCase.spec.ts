@@ -25,7 +25,7 @@ describe("Create Rental", () => {
     });
     it("Should be able to create a new rental if there is another open rental to the same user", async () => {
         expect(async () => {
-            const rental = await createRentalUseCase.execute({
+            await createRentalUseCase.execute({
                 car_id: "123",
                 user_id: "12332",
                 expected_return_date: new Date(),
