@@ -12,7 +12,12 @@ const appDataSource = new DataSource({
 });
 
 export function createConnection(host = "0.0.0.0"): Promise<DataSource> {
-    return appDataSource.setOptions({ host }).initialize();
+    return appDataSource
+        .setOptions({
+            host,
+            database: process.env.NODE_ENV === "test" ? "rentx_test" : "rentx",
+        })
+        .initialize();
 }
 
 export default appDataSource;
