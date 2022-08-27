@@ -28,7 +28,7 @@ describe("Create category controller", () => {
         await connection.destroy();
     });
 
-    it("Should be able to crea", async () => {
+    it("Should be able to create a category", async () => {
         const responseToken = await request(app)
             .post("/sessions")
             .send({ email: "admin@rentx.com.br", password: "admin" });
@@ -43,5 +43,29 @@ describe("Create category controller", () => {
             });
 
         expect(response.status).toBe(201);
+    });
+
+    it("Should not be able to create a category with same name", async () => {
+        const responseToken = await request(app)
+            .post("/sessions")
+            .send({ email: "admin@rentx.com.br", password: "admin" });
+
+        const { token } = responseToken.body;
+        const response = await request(app)
+            .post("/categories")
+            .set({ Authorization: `Bearer ${token}` })
+            .send({
+                name: "Category SuperTest",
+                description: "Category superTest",
+            });
+        await request(app)
+            .post("/categories")
+            .set({ Authorization: `Bearer ${token}` })
+            .send({
+                name: "Category SuperTest",
+                description: "Category superTest",
+            });
+
+        expect(response.status).toBe(400);
     });
 });
