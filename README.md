@@ -1,3 +1,4 @@
+![cover-node js](https://user-images.githubusercontent.com/30449737/187058800-0b5ddd45-d2d6-4039-bb43-ea86bbef27c3.png)
 # Cadastro de carro
 
 **Requisitos Funcionais**
