@@ -17,7 +17,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(router);
 
-createConnection("pg").then(() => console.log("Working"));
+createConnection("0.0.0.0").then(() => console.log("Connection established"));
 
 app.use(
     (
