@@ -6,10 +6,10 @@ import { IDateProvider } from "../IDateProvider";
 dayjs.extend(utc);
 
 class DayjsDateProvider implements IDateProvider {
-    compareInHours(start_date: Date, end_date: Date): number {
+    compare(start_date: Date, end_date: Date, format): number {
         const formattedStartDate = this.convertToUTC(start_date);
         const formattedEndDate = this.convertToUTC(end_date);
-        return dayjs(formattedEndDate).diff(formattedStartDate, "hours");
+        return dayjs(formattedEndDate).diff(formattedStartDate, format);
     }
 
     convertToUTC(date: Date): string {

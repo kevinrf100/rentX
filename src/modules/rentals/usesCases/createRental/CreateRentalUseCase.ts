@@ -35,12 +35,13 @@ class CreateRentalUseCase {
         );
 
         if (user) {
-            throw new AppError("Car is unavailable");
+            throw new AppError("User is unavailable");
         }
 
-        const compare = this.dateProvider.compareInHours(
+        const compare = this.dateProvider.compare(
             new Date(),
-            expected_return_date
+            expected_return_date,
+            "hours"
         );
 
         if (compare < minimumHours) {

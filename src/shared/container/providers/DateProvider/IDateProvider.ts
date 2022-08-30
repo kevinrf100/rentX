@@ -1,5 +1,16 @@
 interface IDateProvider {
-    compareInHours(start_date: Date, end_date: Date): number;
+    compare(
+        start_date: Date,
+        end_date: Date,
+        unit:
+            | "milliseconds"
+            | "seconds"
+            | "minutes"
+            | "hours"
+            | "days"
+            | "months"
+            | "years"
+    ): number;
 }
 
 export { IDateProvider };
