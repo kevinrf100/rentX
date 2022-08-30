@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/respositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
@@ -21,7 +22,11 @@ class CreateRentalUseCase {
         @inject("CarsRepository")
         private carsRepository: ICarsRepository
     ) {}
-    async execute({ car_id, user_id, expected_return_date }: IRequest) {
+    async execute({
+        car_id,
+        user_id,
+        expected_return_date,
+    }: IRequest): Promise<Rental> {
         const minimumHours = 24;
         const carUnavailable =
             await this.rentalsRepository.findOpenRentalByCarId(car_id);
