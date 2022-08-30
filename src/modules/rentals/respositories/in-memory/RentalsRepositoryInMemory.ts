@@ -34,6 +34,10 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
     async findById(id: string): Promise<Rental> {
         return this.rental.find((rental) => rental.id === id);
     }
+
+    async listRentalsByUser(user_id: string): Promise<Rental[]> {
+        return this.rental.filter((rental) => rental.user_id === user_id);
+    }
 }
 
 export { RentalsRepositoryInMemory };

@@ -16,6 +16,4 @@ router.use("/cars", carsRoutes);
 router.use("/rentals", rentalRoutes);
 router.use(authenticateRoutes);
 
-const app = {};
-
 export { router };
