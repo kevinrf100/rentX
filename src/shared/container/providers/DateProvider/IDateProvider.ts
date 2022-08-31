@@ -11,6 +11,7 @@ interface IDateProvider {
             | "months"
             | "years"
     ): number;
+    addDays(days: number): Date;
 }
 
 export { IDateProvider };
