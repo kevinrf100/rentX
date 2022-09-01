@@ -33,7 +33,7 @@ export class RefreshTokenUseCase {
                 token
             );
 
-        if (userTokens) {
+        if (!userTokens) {
             throw new AppError("Refresh token does not exists");
         }
 
