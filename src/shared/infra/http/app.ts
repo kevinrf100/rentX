@@ -4,6 +4,7 @@ import swaggerUi from "swagger-ui-express";
 import "reflect-metadata";
 import "@shared/container";
 import "express-async-errors";
+import "dotenv/config";
 import { AppError } from "@shared/errors/AppError";
 import { createConnection } from "@shared/infra/typeorm";
 
