@@ -55,12 +55,12 @@ describe("Send forgot mail", () => {
 
         await usersRepositoryInMemory.create({
             driver_license: "123431",
-            email: "teste@email.com",
+            email: "teste2@email.com",
             password: "123",
             name: "Testing",
         });
 
-        await sendForgotPasswordMailUseCase.execute("teste@email.com");
+        await sendForgotPasswordMailUseCase.execute("teste2@email.com");
 
         expect(generateTokenMail).toHaveBeenCalled();
     });
