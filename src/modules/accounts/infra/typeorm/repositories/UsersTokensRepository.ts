@@ -24,7 +24,7 @@ class UsersTokensRepository implements IUsersTokensRepository {
             user_id,
         });
 
-        this.repository.save(token);
+        await this.repository.save(token);
 
         return token;
     }

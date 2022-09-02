@@ -31,7 +31,6 @@ async function ensureAuthentication(
             auth.secret_refresh_token
         ) as IPayload;
 
-        const usersRepository = new UsersRepository();
         const user = await usersTokensRepository.findByUserIdAndRefreshToken(
             user_id,
             token
