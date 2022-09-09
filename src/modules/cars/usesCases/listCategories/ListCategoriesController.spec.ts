@@ -33,11 +33,11 @@ describe("Create category controller", () => {
             .post("/sessions")
             .send({ email: "admin@rentx.com.br", password: "admin" });
 
-        const { refresh_token } = responseToken.body;
+        const { token } = responseToken.body;
 
         await request(app)
             .post("/categories")
-            .set({ Authorization: `Bearer ${refresh_token}` })
+            .set({ Authorization: `Bearer ${token}` })
             .send({
                 name: "Category SuperTest",
                 description: "Category superTest",
