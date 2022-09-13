@@ -49,7 +49,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ~/app/rentx
+            cd ~/app/rentX
             npm i
             npm run migratin:run
             pms2 restart rentx_api
