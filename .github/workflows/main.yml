@@ -51,5 +51,5 @@ jobs:
           script: |
             cd ~/app/rentX
             npm i
-            npm run migratin:run
+            npm run migration:run
             pms2 restart rentx_api
